@@ -4,6 +4,16 @@ using UnityEngine;
 using TMPro;
 public class GameController : MonoBehaviour
 {
+
+  enum GameState
+  {
+    START,
+    NPC_ENTER,
+    PLAY,
+    NPC_LEAVE,
+    OVERALL
+  }
+
   [SerializeField] int currentNPC = 1;
   [SerializeField] List<int> npc = new List<int>();
   [SerializeField] List<string> preferenceTier = new List<string>();
