@@ -44,15 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac18cee6bcb25b4c8e053c815e5ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: Kirk
   story: story1
   HappyReaction:
-  - test1
-  - test2
-  - test3
-  - test4
+  - H1
+  - H2
+  - H3
+  - H4
   SadReaction:
-  - test
-  - test
-  - test
+  - S
+  - S2
+  - S3
   eventImage: {fileID: 0}
   eventText: off rate :(
