@@ -57,5 +57,6 @@ public class GameFinish : MonoBehaviour
 
     }
     tier = 0;
+    FindObjectOfType<BoxAnimationController>().RestartBox();
   }
 }
