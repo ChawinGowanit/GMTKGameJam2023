@@ -125,7 +125,6 @@ public class GameController : MonoBehaviour
   }
   public void RoundEnd(string tier)
   {
-    //add NPC reaction
     infoAnimator.SetTrigger("CharacterOut");
     if (currentNPC < 3)
     {
