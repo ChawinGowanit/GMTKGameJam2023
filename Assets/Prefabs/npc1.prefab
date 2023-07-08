@@ -52,5 +52,7 @@ MonoBehaviour:
   - test4
   SadReaction:
   - test
+  - test
+  - test
   eventImage: {fileID: 0}
   eventText: off rate :(
