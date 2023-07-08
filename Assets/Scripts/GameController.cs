@@ -2,24 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
+
+  enum GameState
+  {
+    START,
+    NPC_ENTER,
+    PLAY,
+    NPC_LEAVE,
+    OVERALL
+  }
+
   [SerializeField] int currentNPC = 1;
   [SerializeField] List<int> npc = new List<int>();
   [SerializeField] List<string> preferenceTier = new List<string>();
-  [SerializeField] List<string> preferenceName = new List<string>();
+  //[SerializeField] List<string> preferenceName = new List<string>();
   [SerializeField] List<string> npcSkills = new List<string>();
   [SerializeField] List<bool> reaction = new List<bool>();
 
   [Header("Current NPC info")]
   [SerializeField] GameObject npcInfoPanel;
   [SerializeField] TextMeshProUGUI npcName;
-  [SerializeField] TextMeshProUGUI prefName;
+  //[SerializeField] TextMeshProUGUI prefName;
   [SerializeField] TextMeshProUGUI prefTier;
   [SerializeField] TextMeshProUGUI skill;
   [SerializeField] GameObject storyPanel;
   [SerializeField] TextMeshProUGUI npcStory;
   [SerializeField] Animator infoAnimator;
+  [SerializeField] Button closeBtn;
 
   void Start()
   {
@@ -60,12 +72,12 @@ public class GameController : MonoBehaviour
   {
     for (int i = 0; i < 3; i++)
     {
-      var tiers = new string[] { "silver", "gold", "rainbow" };
-      var names = new string[] { "Miyu", "???" };
+      var tiers = new string[] { "silver", "gold", "rainbow", "lighting Mcqueen", "Nahida" };
+      //var names = new string[] { "Miyu", "???" };
 
-      string name = names[Random.Range(0, names.Length)];
+      //string name = names[Random.Range(0, names.Length)];
       string tier = tiers[Random.Range(0, tiers.Length)];
-      preferenceName.Add(name);
+      //preferenceName.Add(name);
       preferenceTier.Add(tier);
     }
   }
@@ -73,7 +85,7 @@ public class GameController : MonoBehaviour
   {
     for (int i = 0; i < 3; i++)
     {
-      var skills = new string[] { "none", "lucky", "rich" };
+      var skills = new string[] { "none", "lucky", "rich", "salty" };
       string skill = skills[Random.Range(0, skills.Length)];
       npcSkills.Add(skill);
     }
@@ -81,10 +93,11 @@ public class GameController : MonoBehaviour
   public void showNPCPref(int currentNPC)
   {
     //show npc pref /skill
+    closeBtn.enabled = true;
     npcInfoPanel.SetActive(true);
     npcName.text = npc[currentNPC].ToString();
     prefTier.text = preferenceTier[currentNPC];
-    prefName.text = preferenceName[currentNPC];
+    //prefName.text = preferenceName[currentNPC];
     skill.text = npcSkills[currentNPC];
     storyPanel.SetActive(false);
     npcStory.text = this.GetComponent<NPCReactionController>().getNPCStory(npc[currentNPC]);
@@ -93,6 +106,9 @@ public class GameController : MonoBehaviour
   public void onCloseShowNPC()
   {
     infoAnimator.SetTrigger("InfoOut");
+    FindObjectOfType<BoxController>().GenerateGacha(npcSkills[currentNPC], preferenceTier[currentNPC]);
+    closeBtn.enabled = false;
+
     //machine.start()
 
   }
@@ -107,13 +123,30 @@ public class GameController : MonoBehaviour
       storyPanel.SetActive(true);
     }
   }
-  public void onBallReach()
+  public void RoundEnd(string tier)
   {
     //add NPC reaction
+    infoAnimator.SetTrigger("CharacterOut");
+    if (currentNPC < 3)
+    {
+      currentNPC++;
+      showNPCPref(currentNPC);
+    }
+    else
+    {
+      showAllReaction();
+    }
+
   }
   public void showAllReaction()
   {
     //show all NPC reaction
     //finsih game loop
   }
+
+  public string getCurrentNPCSkill()
+  {
+    return npcSkills[currentNPC];
+  }
+
 }
