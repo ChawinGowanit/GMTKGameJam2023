@@ -44,16 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac18cee6bcb25b4c8e053c815e5ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Kirk
-  story: story1
+  _name: Mascot
+  story: A high school student who loves wearing mascot costumes. She believes that
+    her favorite character is somehow real.
   HappyReaction:
-  - H1
-  - H2
-  - H3
-  - H4
+  - Yay this character is so cool
+  - Not as cool as Yongming-chan but still cool
   SadReaction:
-  - S
-  - S2
-  - S3
+  - Yongming-chan save me T^T
+  - Ahhh I'm so unlucky TAT
   eventImage: {fileID: 0}
   eventText: off rate :(

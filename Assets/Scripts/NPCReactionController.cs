@@ -41,6 +41,23 @@ public class NPCReactionController : MonoBehaviour
     }
   }
 
+    public string getNPCname(int npc)
+  {
+    switch (npc)
+    {
+      case 1:
+        return npc1.getName();
+      case 2:
+        return npc2.getName();
+      case 3:
+        return npc3.getName();
+      case 4:
+        return npc4.getName();
+      default:
+        return npc5.getName();
+    }
+  }
+
   public ReactionData getNPCHappyReaction(int npc)
   {
     ReactionData obj;
