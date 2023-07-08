@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   story: story
   HappyReaction:
-  - test
+  - test1
   - test2
   - test3
   - test4
