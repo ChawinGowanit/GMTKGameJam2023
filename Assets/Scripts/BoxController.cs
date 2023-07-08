@@ -8,6 +8,9 @@ public class BoxController : MonoBehaviour
   [SerializeField] float shakeMagnitude = 0.1f;
   [SerializeField] BoxCollider2D topCollider;
   [SerializeField] Transform boxInitiaalTransform;
+  [SerializeField] Transform spinningObstacle;
+  [SerializeField] float obstacleRotationSpeed = 200f;
+  [SerializeField] GameObject obstacles;
 
   [Header("Gacha parameters")]
   [SerializeField] GameObject gachaSilver;
@@ -30,6 +33,7 @@ public class BoxController : MonoBehaviour
   void Update()
   {
     HandleInnput();
+    Spin();
   }
 
   void HandleInnput()
@@ -68,9 +72,11 @@ public class BoxController : MonoBehaviour
 
   IEnumerator StartGame()
   {
-    yield return new WaitForSecondsRealtime(1);
+    yield return new WaitForSecondsRealtime(2.5f);
+    SetupGachaPos();
     canControl = true;
     topCollider.enabled = true;
+    obstacles.SetActive(true);
   }
   void SetupGachaPos()
   {
@@ -82,7 +88,6 @@ public class BoxController : MonoBehaviour
     {
       var spawnGacha = Instantiate(gachas[i], spawnPoints[i].position, spawnPoints[i].rotation);
       spawnGacha.transform.parent = gachasParent.transform;
-
     }
   }
 
@@ -121,8 +126,7 @@ public class BoxController : MonoBehaviour
         AddItem(gachas[randomNum]);
       }
     }
-
-    SetupGachaPos();
+    FindObjectOfType<BoxAnimationController>().PressedBox();
     StartCoroutine("StartGame");
   }
 
@@ -142,6 +146,14 @@ public class BoxController : MonoBehaviour
     foreach (Transform child in gachasParent.transform)
     {
       Destroy(child.gameObject);
+    }
+  }
+
+  void Spin()
+  {
+    if (canControl)
+    {
+      spinningObstacle.Rotate(Vector3.forward, obstacleRotationSpeed * Time.deltaTime);
     }
   }
 

@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
   {
     for (int i = 0; i < 3; i++)
     {
-      var tiers = new string[] { "silver", "gold", "rainbow", "Nahida" };
+      var tiers = new string[] { "silver", "gold", "rainbow" };
       //var names = new string[] { "Miyu", "???" };
 
       //string name = names[Random.Range(0, names.Length)];
