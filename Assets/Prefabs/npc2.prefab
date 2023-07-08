@@ -44,8 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac18cee6bcb25b4c8e053c815e5ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: YM
   story: story2
-  HappyReaction: []
-  SadReaction: []
+  HappyReaction:
+  - Happy1
+  - Happy2
+  - Happy3
+  SadReaction:
+  - Sad
+  - Sad2
+  - Sad23
   eventImage: {fileID: 0}
   eventText: 

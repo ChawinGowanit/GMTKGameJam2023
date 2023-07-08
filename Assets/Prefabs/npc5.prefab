@@ -44,8 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac18cee6bcb25b4c8e053c815e5ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: Naem
   story: story5
-  HappyReaction: []
-  SadReaction: []
+  HappyReaction:
+  - Ym better
+  - Ym better2
+  - Ym better23
+  SadReaction:
+  - Puiz better2
+  - Puiz better23
+  - Puiz better234
   eventImage: {fileID: 0}
   eventText: 
