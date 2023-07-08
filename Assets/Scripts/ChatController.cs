@@ -22,13 +22,13 @@ public class ChatController : MonoBehaviour
   }
 
   // set NPC name to the component
-  public void setName(string newName)
+  public void setChatName(string newName)
   {
     nameObj.text = newName;
   }
 
   // set chat text to the component
-  public void setText(string newText)
+  public void setChatText(string newText)
   {
     textObj.text = newText;
   }
