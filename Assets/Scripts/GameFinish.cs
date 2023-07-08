@@ -44,6 +44,7 @@ public class GameFinish : MonoBehaviour
         count = 0;
         FindObjectOfType<GameController>().RoundEnd(tierString);
         FindObjectOfType<BoxController>().ResetBox();
+        FindObjectOfType<BoxAnimationController>().RestartBox();
       }
     }
     else
@@ -53,10 +54,10 @@ public class GameFinish : MonoBehaviour
         count = 0;
         FindObjectOfType<GameController>().RoundEnd(tierString);
         FindObjectOfType<BoxController>().ResetBox();
+        FindObjectOfType<BoxAnimationController>().RestartBox();
       }
 
     }
     tier = 0;
-    FindObjectOfType<BoxAnimationController>().RestartBox();
   }
 }
