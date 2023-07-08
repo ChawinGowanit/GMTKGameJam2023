@@ -685,6 +685,7 @@ MonoBehaviour:
   skill: {fileID: 1737794920}
   storyPanel: {fileID: 501517986}
   npcStory: {fileID: 1614527471}
+  infoAnimator: {fileID: 1697845754}
 --- !u!1 &568327621
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class GameFinish : MonoBehaviour
     if (other.gameObject.tag == "Gacha")
     {
       Debug.Log(other.gameObject.GetComponent<Gacha>().getGachaTier());
+      Destroy(other.gameObject);
     }
   }
 }
