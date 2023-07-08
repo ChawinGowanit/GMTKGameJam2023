@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class NPCData : MonoBehaviour
 {
-  public string story;
-  public string[] HappyReaction;
-  public string[] SadReaction;
-  public Image eventImage;
-  public string eventText;
+  [SerializeField] string _name;
+  [SerializeField] string story;
+  [SerializeField] string[] HappyReaction;
+  [SerializeField] string[] SadReaction;
+  [SerializeField] Image eventImage;
+  [SerializeField] string eventText;
 
   public string getStory()
   {
     return story;
   }
 
+  public string getName()
+  {
+    return _name;
+  }
   public string getHappyReaction()
   {
     return HappyReaction[Random.Range(0, HappyReaction.Length)];

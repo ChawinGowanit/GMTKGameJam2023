@@ -15,12 +15,13 @@ public class GameController : MonoBehaviour
     OVERALL
   }
 
-  [SerializeField] int currentNPC = 1;
+  [SerializeField] int currentNPC = 0;
   [SerializeField] List<int> npc = new List<int>();
   [SerializeField] List<string> preferenceTier = new List<string>();
   //[SerializeField] List<string> preferenceName = new List<string>();
   [SerializeField] List<string> npcSkills = new List<string>();
-  [SerializeField] List<bool> reaction = new List<bool>();
+  [SerializeField] List<NPCReactionController.ReactionData> reactionList = new List<NPCReactionController.ReactionData>();
+  [SerializeField] GameObject panel;
 
   [Header("Current NPC info")]
   [SerializeField] GameObject npcInfoPanel;
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour
 
   void Start()
   {
+    panel.SetActive(false);
     // init NPC ,pref ,and skill
     randomGameloop();
     // start first NPC
@@ -72,7 +74,7 @@ public class GameController : MonoBehaviour
   {
     for (int i = 0; i < 3; i++)
     {
-      var tiers = new string[] { "silver", "gold", "rainbow", "lighting Mcqueen", "Nahida" };
+      var tiers = new string[] { "silver", "gold", "rainbow", "lighting mcqueen", "Nahida" };
       //var names = new string[] { "Miyu", "???" };
 
       //string name = names[Random.Range(0, names.Length)];
@@ -125,9 +127,23 @@ public class GameController : MonoBehaviour
   }
   public void RoundEnd(string tier)
   {
-    //add NPC reaction
+    NPCReactionController.ReactionData reaction;
+    Debug.Log("Tier");
+    Debug.Log(tier);
+    Debug.Log("pref");
+    Debug.Log(preferenceTier[currentNPC]);
+    if (tier == preferenceTier[currentNPC])
+    {
+      reaction = FindObjectOfType<NPCReactionController>().getNPCHappyReaction(npc[currentNPC]);
+    }
+    else
+    {
+      reaction = FindObjectOfType<NPCReactionController>().getNPCSadReaction(npc[currentNPC]);
+    }
+    reactionList.Add(reaction);
+
     infoAnimator.SetTrigger("CharacterOut");
-    if (currentNPC < 3)
+    if (currentNPC < 2)
     {
       currentNPC++;
       showNPCPref(currentNPC);
@@ -142,6 +158,12 @@ public class GameController : MonoBehaviour
   {
     //show all NPC reaction
     //finsih game loop
+    panel.SetActive(true);
+    foreach (var reaction in reactionList)
+    {
+      panel.GetComponent<PanelController>().spawnNewChat(reaction._name, reaction._reaction);
+    }
+
   }
 
   public string getCurrentNPCSkill()
