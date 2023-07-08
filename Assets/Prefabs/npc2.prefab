@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac18cee6bcb25b4c8e053c815e5ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  story: 
+  story: story2
   HappyReaction: []
   SadReaction: []
   eventImage: {fileID: 0}
