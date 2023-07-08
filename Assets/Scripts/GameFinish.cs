@@ -11,9 +11,9 @@ public class GameFinish : MonoBehaviour
 
   void Start()
   {
-    tierDict.Add("Silver", 1);
-    tierDict.Add("Gold", 2);
-    tierDict.Add("Rainbow", 3);
+    tierDict.Add("silver", 1);
+    tierDict.Add("gold", 2);
+    tierDict.Add("rainbow", 3);
   }
 
   void Update()
@@ -36,6 +36,7 @@ public class GameFinish : MonoBehaviour
       //tier = other.gameObject.GetComponent<Gacha>().getGachaTier();
       Destroy(other.gameObject);
     }
+
     if (FindObjectOfType<GameController>().getCurrentNPCSkill() != "rich")
     {
       if (count == 1)
@@ -55,5 +56,6 @@ public class GameFinish : MonoBehaviour
       }
 
     }
+    tier = 0;
   }
 }

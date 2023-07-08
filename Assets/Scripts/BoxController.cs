@@ -38,18 +38,18 @@ public class BoxController : MonoBehaviour
     {
       if (Input.GetKey(KeyCode.A))
       {
-        Debug.Log("Rotate Left");
+        // Debug.Log("Rotate Left");
         transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
       }
       else if (Input.GetKey(KeyCode.D))
       {
-        Debug.Log("Rotate Right");
+        // Debug.Log("Rotate Right");
         transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
       }
 
       if (Input.GetKeyDown(KeyCode.Space))
       {
-        Debug.Log("Shake!!!");
+        // Debug.Log("Shake!!!");
         Vector3 randomOffset = Random.insideUnitSphere * shakeMagnitude;
 
         //Shake box
