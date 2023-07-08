@@ -44,15 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac18cee6bcb25b4c8e053c815e5ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: YM
-  story: story2
+  _name: Wimpy Kid
+  story: This kid likes anime but tries to hide it because his friends think anime
+    is for kids. Hardcore origin story really.
   HappyReaction:
-  - Happy1
-  - Happy2
-  - Happy3
+  - You losers can only wish for this magnificence
+  - I'm the best hahaha
   SadReaction:
-  - Sad
-  - Sad2
-  - Sad23
+  - Bro this collection is trash
+  - You guys still in this group?
+  - This gacha thing is stupid anyways...
   eventImage: {fileID: 0}
   eventText: 
