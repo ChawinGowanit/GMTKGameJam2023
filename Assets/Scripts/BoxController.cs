@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class BoxController : MonoBehaviour
 {
   [Header("Box parameters")]
   [SerializeField] float rotationSpeed = 10f;
   [SerializeField] float shakeMagnitude = 0.1f;
   [SerializeField] BoxCollider2D topCollider;
+  [SerializeField] Transform boxInitiaalTransform;
 
   [Header("Gacha parameters")]
   [SerializeField] GameObject gachaSilver;
@@ -24,9 +24,7 @@ public class BoxController : MonoBehaviour
   {
     boxInitialPos = transform.position;
     topCollider.enabled = false;
-    GenerateGacha();
-    SetupGachaPos();
-    StartCoroutine("StartGame");
+    //GenerateGacha();
   }
 
   void Update()
@@ -61,7 +59,7 @@ public class BoxController : MonoBehaviour
         Rigidbody2D[] childRigidbodies = gachasParent.GetComponentsInChildren<Rigidbody2D>();
         foreach (var item in childRigidbodies)
         {
-          Vector2 randomVelocity = Random.insideUnitCircle * 30;
+          Vector2 randomVelocity = Random.insideUnitCircle * 15;
           item.velocity += randomVelocity;
         }
       }
@@ -100,12 +98,32 @@ public class BoxController : MonoBehaviour
       array[k] = temp;
     }
   }
-
-  public void GenerateGacha()
+  public void GenerateGacha(string skill, string tier)
   {
     AddItem(gachaRainbow);
     AddItem(gachaGold);
     AddItem(gachaSilver);
+    if (skill == "lucky")
+    {
+      AddItem(gachaRainbow);
+      AddItem(gachaRainbow);
+    }
+    else if (skill == "salty")
+    {
+      AddItem(gachaSilver);
+      AddItem(gachaSilver);
+    }
+    else
+    {
+      for (int i = 0; i < 2; i++)
+      {
+        int randomNum = Random.Range(0, 3);
+        AddItem(gachas[randomNum]);
+      }
+    }
+
+    SetupGachaPos();
+    StartCoroutine("StartGame");
   }
 
   void AddItem(GameObject newItem)
@@ -113,6 +131,18 @@ public class BoxController : MonoBehaviour
     System.Array.Resize(ref gachas, gachas.Length + 1);
 
     gachas[gachas.Length - 1] = newItem;
+  }
+
+  public void ResetBox()
+  {
+    transform.rotation = Quaternion.Euler(0, 0, 0);
+    canControl = false;
+    topCollider.enabled = false;
+    gachas = new GameObject[0];
+    foreach (Transform child in gachasParent.transform)
+    {
+      Destroy(child.gameObject);
+    }
   }
 
 }
