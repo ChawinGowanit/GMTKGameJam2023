@@ -149,6 +149,7 @@ public class GameController : MonoBehaviour
   public void OnCloseShowNPC()
   {
     infoAnimator.SetTrigger("InfoOut");
+    AudioManager.instance.Play("ButtonPress");
     FindObjectOfType<BoxController>().GenerateGacha(npcSkills[currentNPC], preferenceTier[currentNPC]);
     closeBtn.enabled = false;
   }
@@ -156,6 +157,7 @@ public class GameController : MonoBehaviour
   public void ToggleNPCStory()
   {
     storyPanel.SetActive(!storyPanel.activeInHierarchy);
+    AudioManager.instance.Play("ButtonPress");
   }
 
   public void RoundEnd(string tier)

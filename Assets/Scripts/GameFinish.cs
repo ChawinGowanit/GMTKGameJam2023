@@ -49,7 +49,7 @@ public class GameFinish : MonoBehaviour
     {
       gacahInParticle.Play();
     }
-
+    AudioManager.instance.Play("GachaGet");
     StartCoroutine("DelayFinishGame");
 
   }
