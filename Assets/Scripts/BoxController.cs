@@ -143,6 +143,7 @@ public class BoxController : MonoBehaviour
     {
       Destroy(child.gameObject);
     }
+    obstacles.SetActive(false);
   }
 
   void Spin()
@@ -152,5 +153,4 @@ public class BoxController : MonoBehaviour
       spinningObstacle.Rotate(Vector3.forward, obstacleRotationSpeed * Time.deltaTime);
     }
   }
-
 }

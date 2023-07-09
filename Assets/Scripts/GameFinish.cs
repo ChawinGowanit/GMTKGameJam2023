@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameFinish : MonoBehaviour
 {
+
+  [SerializeField] ParticleSystem gacahInParticle;
   int count = 0;
   int tier = 0;
   string tierString = "";
@@ -41,10 +43,22 @@ public class GameFinish : MonoBehaviour
     }
 
     count = 0;
+    tier = 0;
+    gacahInParticle.transform.position = other.transform.position;
+    if (!gacahInParticle.isPlaying)
+    {
+      gacahInParticle.Play();
+    }
+
+    StartCoroutine("DelayFinishGame");
+
+  }
+
+  IEnumerator DelayFinishGame()
+  {
+    yield return new WaitForSecondsRealtime(2f);
     FindObjectOfType<GameController>().RoundEnd(tierString);
     FindObjectOfType<BoxController>().ResetBox();
     FindObjectOfType<BoxAnimationController>().RestartBox();
-    tier = 0;
-
   }
 }
