@@ -95,11 +95,11 @@ public class GameController : MonoBehaviour
     // NOTE - show npc pref /skill
     closeBtn.enabled = true;
     npcInfoPanel.SetActive(true);
-    npcName.text = "Name: " + FindObjectOfType<NPCReactionController>().getNPCname(npc[currentNPC]);
+    npcName.text = "Name: " + FindObjectOfType<NPCReactionController>().GetNPCname(npc[currentNPC]);
     prefTier.text = "Want: " + preferenceTier[currentNPC];
     skill.text = "Skill: " + npcSkills[currentNPC];
     storyPanel.SetActive(false);
-    npcStory.text = this.GetComponent<NPCReactionController>().getNPCStory(npc[currentNPC]);
+    npcStory.text = this.GetComponent<NPCReactionController>().GetNPCStory(npc[currentNPC]);
     infoAnimator.SetTrigger("InfoIn");
     // NOTE - npc sprite
   }
@@ -121,12 +121,12 @@ public class GameController : MonoBehaviour
     NPCReactionController.ReactionData reaction;
     if (tier == preferenceTier[currentNPC])
     {
-      reaction = FindObjectOfType<NPCReactionController>().getNPCHappyReaction(npc[currentNPC]);
+      reaction = FindObjectOfType<NPCReactionController>().GetNPCHappyReaction(npc[currentNPC]);
       FindObjectOfType<NPCSpriteController>().happy();
     }
     else
     {
-      reaction = FindObjectOfType<NPCReactionController>().getNPCSadReaction(npc[currentNPC]);
+      reaction = FindObjectOfType<NPCReactionController>().GetNPCSadReaction(npc[currentNPC]);
       FindObjectOfType<NPCSpriteController>().sad();
     }
     reactionList.Add(reaction);

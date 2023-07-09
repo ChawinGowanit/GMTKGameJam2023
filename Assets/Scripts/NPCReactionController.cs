@@ -24,82 +24,82 @@ public class NPCReactionController : MonoBehaviour
   [SerializeField] NPCData npc4;
   [SerializeField] NPCData npc5;
 
-  public string getNPCStory(int npc)
+  public string GetNPCStory(int npc)
   {
     switch (npc)
     {
       case 1:
-        return npc1.getStory();
+        return npc1.GetStory();
       case 2:
-        return npc2.getStory();
+        return npc2.GetStory();
       case 3:
-        return npc3.getStory();
+        return npc3.GetStory();
       case 4:
-        return npc4.getStory();
+        return npc4.GetStory();
       default:
-        return npc5.getStory();
+        return npc5.GetStory();
     }
   }
 
-    public string getNPCname(int npc)
+  public string GetNPCname(int npc)
   {
     switch (npc)
     {
       case 1:
-        return npc1.getName();
+        return npc1.GetName();
       case 2:
-        return npc2.getName();
+        return npc2.GetName();
       case 3:
-        return npc3.getName();
+        return npc3.GetName();
       case 4:
-        return npc4.getName();
+        return npc4.GetName();
       default:
-        return npc5.getName();
+        return npc5.GetName();
     }
   }
 
-  public ReactionData getNPCHappyReaction(int npc)
+  public ReactionData GetNPCHappyReaction(int npc)
   {
     ReactionData obj;
     switch (npc)
     {
       case 1:
-        obj = new ReactionData(npc1.getName(), npc1.getHappyReaction());
+        obj = new ReactionData(npc1.GetName(), npc1.GetHappyReaction());
         return obj;
       case 2:
-        obj = new ReactionData(npc2.getName(), npc2.getHappyReaction());
+        obj = new ReactionData(npc2.GetName(), npc2.GetHappyReaction());
         return obj;
       case 3:
-        obj = new ReactionData(npc3.getName(), npc3.getHappyReaction());
+        obj = new ReactionData(npc3.GetName(), npc3.GetHappyReaction());
         return obj;
       case 4:
-        obj = new ReactionData(npc4.getName(), npc4.getHappyReaction());
+        obj = new ReactionData(npc4.GetName(), npc4.GetHappyReaction());
         return obj;
       default:
-        obj = new ReactionData(npc5.getName(), npc5.getHappyReaction());
+        obj = new ReactionData(npc5.GetName(), npc5.GetHappyReaction());
         return obj;
     }
   }
 
-  public ReactionData getNPCSadReaction(int npc)
+  public ReactionData GetNPCSadReaction(int npc)
   {
     ReactionData obj;
     switch (npc)
     {
       case 1:
-        obj = new ReactionData(npc1.getName(), npc1.getSadReaction());
+        obj = new ReactionData(npc1.GetName(), npc1.GetSadReaction());
         return obj;
       case 2:
-        obj = new ReactionData(npc2.getName(), npc2.getSadReaction());
+        obj = new ReactionData(npc2.GetName(), npc2.GetSadReaction());
         return obj;
       case 3:
-        obj = new ReactionData(npc3.getName(), npc3.getSadReaction());
+        obj = new ReactionData(npc3.GetName(), npc3.GetSadReaction());
         return obj;
       case 4:
-        obj = new ReactionData(npc4.getName(), npc4.getSadReaction());
+        obj = new ReactionData(npc4.GetName(), npc4.GetSadReaction());
         return obj;
       default:
-        obj = new ReactionData(npc5.getName(), npc5.getSadReaction());
+        obj = new ReactionData(npc5.GetName(), npc5.GetSadReaction());
         return obj;
     }
   }
