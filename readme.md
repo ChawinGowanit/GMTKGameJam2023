@@ -2,9 +2,9 @@
 
 > **This is only a developing part, not the actual game.**
 
-In the world of cruel RNGs,
+In the world of cruel RNGs, where people get salty rolls, only YOU can save them.
 
-“In Gacha They Trust” is a game created for the GMTK Game Jam 2023 with the theme "roles reversed" in 48 hours.  Here's the Game Jam Page!
+“In Gacha They Trust” is a game created for the GMTK Game Jam 2023 with the theme "roles reversed" in 48 hours.  [Here's the Game Jam Page!](https://itch.io/jam/gmtk-2023)
 
 The game should take around 3 minutes to complete. 
 
@@ -37,6 +37,8 @@ After rigging every pulls, you’ll be peeking at their gacha-addicted group cha
 - **A** - Rotate the machine counter-clockwise
 - **D** - Rotate the machine clockwise
 - **W** - Shake the machine
+
+Music and Sound effects from [Dova Syndrome](https://dova-s.jp/) and [Epidemic Sound](https://www.epidemicsound.com/)
 
 ## Credits
 
