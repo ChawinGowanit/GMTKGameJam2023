@@ -56,7 +56,7 @@ public class GameFinish : MonoBehaviour
 
   IEnumerator DelayFinishGame()
   {
-    yield return new WaitForSecondsRealtime(2f);
+    yield return new WaitForSecondsRealtime(1f);
     FindObjectOfType<GameController>().RoundEnd(tierString);
     FindObjectOfType<BoxController>().ResetBox();
     FindObjectOfType<BoxAnimationController>().RestartBox();

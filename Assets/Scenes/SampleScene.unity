@@ -2883,4 +2883,4 @@ PrefabInstance:
       value: NPC4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a75fed400c24deb498a8a51ac1dca6c0, type: 3
+  m_SourcePrefab: {fileID: 100100000, guid: a75fed400c24deb498a8a51ac1dca6c0, type: 3}
