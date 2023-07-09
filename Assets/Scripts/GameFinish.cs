@@ -25,19 +25,19 @@ public class GameFinish : MonoBehaviour
   {
     if (other.gameObject.tag == "Gacha")
     {
-      if (tierDict[other.gameObject.GetComponent<Gacha>().getGachaTier()] > tier)
+      if (tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()] > tier)
       {
-        tier = tierDict[other.gameObject.GetComponent<Gacha>().getGachaTier()];
-        tierString = other.gameObject.GetComponent<Gacha>().getGachaTier();
+        tier = tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()];
+        tierString = other.gameObject.GetComponent<Gacha>().GetGachaTier();
       }
       count++;
 
-      Debug.Log(other.gameObject.GetComponent<Gacha>().getGachaTier());
+      Debug.Log(other.gameObject.GetComponent<Gacha>().GetGachaTier());
       //tier = other.gameObject.GetComponent<Gacha>().getGachaTier();
       Destroy(other.gameObject);
     }
 
-    if (FindObjectOfType<GameController>().getCurrentNPCSkill() != "rich")
+    if (FindObjectOfType<GameController>().GetCurrentNPCSkill() != "rich")
     {
       if (count == 1)
       {

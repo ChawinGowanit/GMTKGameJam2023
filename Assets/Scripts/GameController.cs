@@ -37,21 +37,20 @@ public class GameController : MonoBehaviour
   void Start()
   {
     // init NPC ,pref ,and skill
-    randomGameloop();
+    RandomGameloop();
     // start first NPC
-    changeNPC();
-    showNPCPref(currentNPC);
+    ChangeNPC();
+    ShowNPCPref(currentNPC);
   }
-  void Update()
+
+  public void RandomGameloop()
   {
+    RandomNPC();
+    RandomPref();
+    RandomSkill();
   }
-  public void randomGameloop()
-  {
-    randomNPC();
-    randomPref();
-    randomSkill();
-  }
-  public void randomNPC()
+
+  public void RandomNPC()
   {
     while (npc.Count < 3)
     {
@@ -70,7 +69,7 @@ public class GameController : MonoBehaviour
       }
     }
   }
-  public void randomPref()
+  public void RandomPref()
   {
     for (int i = 0; i < 3; i++)
     {
@@ -83,7 +82,7 @@ public class GameController : MonoBehaviour
       preferenceTier.Add(tier);
     }
   }
-  public void randomSkill()
+  public void RandomSkill()
   {
     for (int i = 0; i < 3; i++)
     {
@@ -92,7 +91,7 @@ public class GameController : MonoBehaviour
       npcSkills.Add(skill);
     }
   }
-  public void showNPCPref(int currentNPC)
+  public void ShowNPCPref(int currentNPC)
   {
     //show npc pref /skill
     closeBtn.enabled = true;
@@ -106,7 +105,7 @@ public class GameController : MonoBehaviour
     infoAnimator.SetTrigger("InfoIn");
     //npc sprite
   }
-  public void onCloseShowNPC()
+  public void OnCloseShowNPC()
   {
     infoAnimator.SetTrigger("InfoOut");
     FindObjectOfType<BoxController>().GenerateGacha(npcSkills[currentNPC], preferenceTier[currentNPC]);
@@ -115,7 +114,7 @@ public class GameController : MonoBehaviour
     //machine.start()
 
   }
-  public void toggleNPCStory()
+  public void ToggleNPCStory()
   {
     if (storyPanel.activeInHierarchy)
     {
@@ -149,15 +148,15 @@ public class GameController : MonoBehaviour
     if (currentNPC < 2)
     {
       currentNPC++;
-      showNPCPref(currentNPC);
+      ShowNPCPref(currentNPC);
     }
     else
     {
-      showAllReaction();
+      ShowAllReaction();
     }
 
   }
-  public void showAllReaction()
+  public void ShowAllReaction()
   {
     //show all NPC reaction
     //finsih game loop
@@ -169,11 +168,11 @@ public class GameController : MonoBehaviour
 
   }
 
-  public string getCurrentNPCSkill()
+  public string GetCurrentNPCSkill()
   {
     return npcSkills[currentNPC];
   }
-  public void changeNPC()
+  public void ChangeNPC()
   {
     FindObjectOfType<NPCActivate>().changeNPC(npc[currentNPC]);
   }
