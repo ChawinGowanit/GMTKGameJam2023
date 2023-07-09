@@ -164,7 +164,7 @@ public class GameController : MonoBehaviour
 
   public void ChangeNPC()
   {
-    FindObjectOfType<NPCActivate>().changeNPC(npc[currentNPC]);
+    FindObjectOfType<NPCActivate>().ChangeNPC(npc[currentNPC]);
   }
 
 }
