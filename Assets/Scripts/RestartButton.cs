@@ -22,6 +22,7 @@ public class RestartButton : MonoBehaviour
 
   public void OnRestartClicked()
   {
+    AudioManager.instance.Play("ButtonPress");
     TransitionManager.Instance().Transition("SampleScene", transition, startDelay);
   }
 }

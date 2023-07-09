@@ -20,11 +20,16 @@ public class GameFinish : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other)
   {
+    GetComponent<BoxCollider2D>().enabled = false;
     if (other.gameObject.tag != "Gacha")
     {
-      return;
+      goto exited;
     }
-
+    AudioManager.instance.Play("GachaGet");
+    if (!gacahInParticle.isPlaying)
+    {
+      gacahInParticle.Play();
+    }
     if (tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()] > tier)
     {
       tier = tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()];
@@ -35,30 +40,20 @@ public class GameFinish : MonoBehaviour
 
     if (FindObjectOfType<GameController>().GetCurrentNPCSkill() == "rich" && count < 2)
     {
-      return;
+      goto exited;
     }
     if (FindObjectOfType<GameController>().GetCurrentNPCSkill() != "rich" && count < 1)
     {
-      return;
+      goto exited;
     }
 
     count = 0;
     tier = 0;
     gacahInParticle.transform.position = other.transform.position;
-    if (!gacahInParticle.isPlaying)
-    {
-      gacahInParticle.Play();
-    }
-
-    StartCoroutine("DelayFinishGame");
-
-  }
-
-  IEnumerator DelayFinishGame()
-  {
-    yield return new WaitForSecondsRealtime(0f);
     FindObjectOfType<GameController>().RoundEnd(tierString);
     FindObjectOfType<BoxController>().ResetBox();
     FindObjectOfType<BoxAnimationController>().RestartBox();
+    exited:
+      GetComponent<BoxCollider2D>().enabled = true;
   }
 }

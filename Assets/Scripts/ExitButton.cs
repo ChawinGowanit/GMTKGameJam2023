@@ -19,6 +19,7 @@ public class ExitButton : MonoBehaviour
   }
   public void OnExitClicked()
   {
+    AudioManager.instance.Play("ButtonPress");
     TransitionManager.Instance().Transition("menuScene", transition, startDelay);
   }
 }
