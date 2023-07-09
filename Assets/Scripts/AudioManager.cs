@@ -4,19 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour
+{
 
 	public static AudioManager instance;
 
 	public Sound[] sounds;
 
-	void Awake ()
+	void Awake()
 	{
 		if (instance != null)
 		{
 			Destroy(gameObject);
 			return;
-		} else
+		}
+		else
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
