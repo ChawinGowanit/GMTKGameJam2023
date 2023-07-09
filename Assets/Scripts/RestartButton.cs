@@ -16,7 +16,7 @@ public class RestartButton : MonoBehaviour
 
   }
 
-  public void onRestartClicked()
+  public void OnRestartClicked()
   {
     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
   }

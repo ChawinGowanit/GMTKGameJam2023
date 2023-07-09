@@ -7,18 +7,7 @@ public class NPCActivate : MonoBehaviour
   [SerializeField] GameObject npc1;
   [SerializeField] GameObject npc2;
 
-  // Start is called before the first frame update
-  void Start()
-  {
-
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-
-  }
-  public void changeNPC(int npc)
+  public void ChangeNPC(int npc)
   {
     npc1.SetActive(false);
     npc2.SetActive(false);

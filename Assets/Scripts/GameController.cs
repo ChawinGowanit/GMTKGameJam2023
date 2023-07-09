@@ -36,22 +36,21 @@ public class GameController : MonoBehaviour
 
   void Start()
   {
-    // init NPC ,pref ,and skill
-    randomGameloop();
-    // start first NPC
-    changeNPC();
-    showNPCPref(currentNPC);
+    // NOTE - init NPC ,pref ,and skill
+    RandomGameloop();
+    // NOTE - start first NPC
+    ChangeNPC();
+    ShowNPCPref(currentNPC);
   }
-  void Update()
+
+  public void RandomGameloop()
   {
+    RandomNPC();
+    RandomPref();
+    RandomSkill();
   }
-  public void randomGameloop()
-  {
-    randomNPC();
-    randomPref();
-    randomSkill();
-  }
-  public void randomNPC()
+
+  public void RandomNPC()
   {
     while (npc.Count < 3)
     {
@@ -70,20 +69,18 @@ public class GameController : MonoBehaviour
       }
     }
   }
-  public void randomPref()
+
+  public void RandomPref()
   {
     for (int i = 0; i < 3; i++)
     {
       var tiers = new string[] { "silver", "gold", "rainbow" };
-      //var names = new string[] { "Miyu", "???" };
-
-      //string name = names[Random.Range(0, names.Length)];
       string tier = tiers[Random.Range(0, tiers.Length)];
-      //preferenceName.Add(name);
       preferenceTier.Add(tier);
     }
   }
-  public void randomSkill()
+
+  public void RandomSkill()
   {
     for (int i = 0; i < 3; i++)
     {
@@ -92,56 +89,45 @@ public class GameController : MonoBehaviour
       npcSkills.Add(skill);
     }
   }
-  public void showNPCPref(int currentNPC)
+
+  public void ShowNPCPref(int currentNPC)
   {
-    //show npc pref /skill
+    // NOTE - show npc pref /skill
     closeBtn.enabled = true;
     npcInfoPanel.SetActive(true);
-    npcName.text = "Name: " + FindObjectOfType<NPCReactionController>().getNPCname(npc[currentNPC]);
+    npcName.text = "Name: " + FindObjectOfType<NPCReactionController>().GetNPCname(npc[currentNPC]);
     prefTier.text = "Want: " + preferenceTier[currentNPC];
-    //prefName.text = preferenceName[currentNPC];
     skill.text = "Skill: " + npcSkills[currentNPC];
     storyPanel.SetActive(false);
-    npcStory.text = this.GetComponent<NPCReactionController>().getNPCStory(npc[currentNPC]);
+    npcStory.text = this.GetComponent<NPCReactionController>().GetNPCStory(npc[currentNPC]);
     infoAnimator.SetTrigger("InfoIn");
-    //npc sprite
+    // NOTE - npc sprite
   }
-  public void onCloseShowNPC()
+
+  public void OnCloseShowNPC()
   {
     infoAnimator.SetTrigger("InfoOut");
     FindObjectOfType<BoxController>().GenerateGacha(npcSkills[currentNPC], preferenceTier[currentNPC]);
     closeBtn.enabled = false;
-
-    //machine.start()
-
   }
-  public void toggleNPCStory()
+
+  public void ToggleNPCStory()
   {
-    if (storyPanel.activeInHierarchy)
-    {
-      storyPanel.SetActive(false);
-    }
-    else
-    {
-      storyPanel.SetActive(true);
-    }
+    storyPanel.SetActive(!storyPanel.activeInHierarchy);
   }
+
   public void RoundEnd(string tier)
   {
     NPCReactionController.ReactionData reaction;
-    Debug.Log("Tier");
-    Debug.Log(tier);
-    Debug.Log("pref");
-    Debug.Log(preferenceTier[currentNPC]);
     if (tier == preferenceTier[currentNPC])
     {
-      reaction = FindObjectOfType<NPCReactionController>().getNPCHappyReaction(npc[currentNPC]);
-      FindObjectOfType<NPCSpriteController>().happy();
+      reaction = FindObjectOfType<NPCReactionController>().GetNPCHappyReaction(npc[currentNPC]);
+      FindObjectOfType<NPCSpriteController>().Happy();
     }
     else
     {
-      reaction = FindObjectOfType<NPCReactionController>().getNPCSadReaction(npc[currentNPC]);
-      FindObjectOfType<NPCSpriteController>().sad();
+      reaction = FindObjectOfType<NPCReactionController>().GetNPCSadReaction(npc[currentNPC]);
+      FindObjectOfType<NPCSpriteController>().Sad();
     }
     reactionList.Add(reaction);
 
@@ -149,33 +135,36 @@ public class GameController : MonoBehaviour
     if (currentNPC < 2)
     {
       currentNPC++;
-      showNPCPref(currentNPC);
+      ShowNPCPref(currentNPC);
     }
     else
     {
-      showAllReaction();
+      ShowAllReaction();
     }
 
   }
-  public void showAllReaction()
+
+  // show all NPC reaction
+  // finsih game loop
+  public void ShowAllReaction()
   {
-    //show all NPC reaction
-    //finsih game loop
+
     infoAnimator.SetTrigger("PhoneIn");
     foreach (var reaction in reactionList)
     {
-      panel.GetComponent<PanelController>().spawnNewChat(reaction._name, reaction._reaction);
+      panel.GetComponent<PanelController>().SpawnNewChat(reaction._name, reaction._reaction);
     }
 
   }
 
-  public string getCurrentNPCSkill()
+  public string GetCurrentNPCSkill()
   {
     return npcSkills[currentNPC];
   }
-  public void changeNPC()
+
+  public void ChangeNPC()
   {
-    FindObjectOfType<NPCActivate>().changeNPC(npc[currentNPC]);
+    FindObjectOfType<NPCActivate>().ChangeNPC(npc[currentNPC]);
   }
 
 }

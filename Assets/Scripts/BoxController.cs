@@ -38,36 +38,33 @@ public class BoxController : MonoBehaviour
 
   void HandleInnput()
   {
-    if (canControl)
+
+    if (!canControl)
     {
-      if (Input.GetKey(KeyCode.A))
-      {
-        // Debug.Log("Rotate Left");
-        transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
-      }
-      else if (Input.GetKey(KeyCode.D))
-      {
-        // Debug.Log("Rotate Right");
-        transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
-      }
+      return;
+    }
 
-      if (Input.GetKeyDown(KeyCode.Space))
+    if (Input.GetKey(KeyCode.A))
+    {
+      transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+    }
+    else if (Input.GetKey(KeyCode.D))
+    {
+      transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
+    }
+
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+      Vector3 randomOffset = Random.insideUnitSphere * shakeMagnitude;
+
+      Rigidbody2D[] childRigidbodies = gachasParent.GetComponentsInChildren<Rigidbody2D>();
+      foreach (var item in childRigidbodies)
       {
-        // Debug.Log("Shake!!!");
-        Vector3 randomOffset = Random.insideUnitSphere * shakeMagnitude;
-
-        //Shake box
-        //transform.position = boxInitialPos + randomOffset;
-
-        //Shake ball
-        Rigidbody2D[] childRigidbodies = gachasParent.GetComponentsInChildren<Rigidbody2D>();
-        foreach (var item in childRigidbodies)
-        {
-          Vector2 randomVelocity = Random.insideUnitCircle * 15;
-          item.velocity += randomVelocity;
-        }
+        Vector2 randomVelocity = Random.insideUnitCircle * 15;
+        item.velocity += randomVelocity;
       }
     }
+
   }
 
   IEnumerator StartGame()
@@ -78,6 +75,7 @@ public class BoxController : MonoBehaviour
     topCollider.enabled = true;
     obstacles.SetActive(true);
   }
+
   void SetupGachaPos()
   {
     ShuffleArray(spawnPoints);
@@ -98,11 +96,10 @@ public class BoxController : MonoBehaviour
     {
       int k = Random.Range(0, n);
       n--;
-      T temp = array[n];
-      array[n] = array[k];
-      array[k] = temp;
+      (array[k], array[n]) = (array[n], array[k]);
     }
   }
+
   public void GenerateGacha(string skill, string tier)
   {
     AddItem(gachaRainbow);
@@ -133,7 +130,6 @@ public class BoxController : MonoBehaviour
   void AddItem(GameObject newItem)
   {
     System.Array.Resize(ref gachas, gachas.Length + 1);
-
     gachas[gachas.Length - 1] = newItem;
   }
 

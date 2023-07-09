@@ -16,15 +16,15 @@ public class NPCSpriteController : MonoBehaviour
   {
 
   }
-  public void happy()
+  public void Happy()
   {
     npcAnimator.SetTrigger("Happy");
   }
-  public void sad()
+  public void Sad()
   {
     npcAnimator.SetTrigger("Sad");
   }
-  public void idle()
+  public void Idle()
   {
     npcAnimator.SetTrigger("Idle");
   }
