@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
   {
     npc1icon = Resources.Load<Sprite>("npc1icon");
     npc2icon = Resources.Load<Sprite>("npc2icon");
-    npc3icon = Resources.Load<Sprite>("npc1icon");
+    npc3icon = Resources.Load<Sprite>("npc3icon");
     npc4icon = Resources.Load<Sprite>("npc4icon");
     npc5icon = Resources.Load<Sprite>("npc5icon");
   }
