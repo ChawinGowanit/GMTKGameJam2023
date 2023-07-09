@@ -36,9 +36,9 @@ public class GameController : MonoBehaviour
 
   void Start()
   {
-    // init NPC ,pref ,and skill
+    // NOTE - init NPC ,pref ,and skill
     RandomGameloop();
-    // start first NPC
+    // NOTE - start first NPC
     ChangeNPC();
     ShowNPCPref(currentNPC);
   }
@@ -69,19 +69,17 @@ public class GameController : MonoBehaviour
       }
     }
   }
+
   public void RandomPref()
   {
     for (int i = 0; i < 3; i++)
     {
       var tiers = new string[] { "silver", "gold", "rainbow" };
-      //var names = new string[] { "Miyu", "???" };
-
-      //string name = names[Random.Range(0, names.Length)];
       string tier = tiers[Random.Range(0, tiers.Length)];
-      //preferenceName.Add(name);
       preferenceTier.Add(tier);
     }
   }
+
   public void RandomSkill()
   {
     for (int i = 0; i < 3; i++)
@@ -91,47 +89,36 @@ public class GameController : MonoBehaviour
       npcSkills.Add(skill);
     }
   }
+
   public void ShowNPCPref(int currentNPC)
   {
-    //show npc pref /skill
+    // NOTE - show npc pref /skill
     closeBtn.enabled = true;
     npcInfoPanel.SetActive(true);
     npcName.text = "Name: " + FindObjectOfType<NPCReactionController>().getNPCname(npc[currentNPC]);
     prefTier.text = "Want: " + preferenceTier[currentNPC];
-    //prefName.text = preferenceName[currentNPC];
     skill.text = "Skill: " + npcSkills[currentNPC];
     storyPanel.SetActive(false);
     npcStory.text = this.GetComponent<NPCReactionController>().getNPCStory(npc[currentNPC]);
     infoAnimator.SetTrigger("InfoIn");
-    //npc sprite
+    // NOTE - npc sprite
   }
+
   public void OnCloseShowNPC()
   {
     infoAnimator.SetTrigger("InfoOut");
     FindObjectOfType<BoxController>().GenerateGacha(npcSkills[currentNPC], preferenceTier[currentNPC]);
     closeBtn.enabled = false;
-
-    //machine.start()
-
   }
+
   public void ToggleNPCStory()
   {
-    if (storyPanel.activeInHierarchy)
-    {
-      storyPanel.SetActive(false);
-    }
-    else
-    {
-      storyPanel.SetActive(true);
-    }
+    storyPanel.SetActive(!storyPanel.activeInHierarchy);
   }
+
   public void RoundEnd(string tier)
   {
     NPCReactionController.ReactionData reaction;
-    Debug.Log("Tier");
-    Debug.Log(tier);
-    Debug.Log("pref");
-    Debug.Log(preferenceTier[currentNPC]);
     if (tier == preferenceTier[currentNPC])
     {
       reaction = FindObjectOfType<NPCReactionController>().getNPCHappyReaction(npc[currentNPC]);
@@ -156,10 +143,12 @@ public class GameController : MonoBehaviour
     }
 
   }
+
+  // show all NPC reaction
+  // finsih game loop
   public void ShowAllReaction()
   {
-    //show all NPC reaction
-    //finsih game loop
+
     infoAnimator.SetTrigger("PhoneIn");
     foreach (var reaction in reactionList)
     {
@@ -172,6 +161,7 @@ public class GameController : MonoBehaviour
   {
     return npcSkills[currentNPC];
   }
+
   public void ChangeNPC()
   {
     FindObjectOfType<NPCActivate>().changeNPC(npc[currentNPC]);

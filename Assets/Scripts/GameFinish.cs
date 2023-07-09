@@ -16,11 +16,6 @@ public class GameFinish : MonoBehaviour
     tierDict.Add("rainbow", 3);
   }
 
-  void Update()
-  {
-
-  }
-
   private void OnTriggerEnter2D(Collider2D other)
   {
     if (other.gameObject.tag == "Gacha")
