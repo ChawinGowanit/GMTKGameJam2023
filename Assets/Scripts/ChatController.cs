@@ -33,7 +33,7 @@ public class ChatController : MonoBehaviour
     }
     else if (newName == "Witch")
     {
-      imgPath = "npc1icon";
+      imgPath = "npc3icon";
     }
     else if (newName == "Normie Girl")
     {
