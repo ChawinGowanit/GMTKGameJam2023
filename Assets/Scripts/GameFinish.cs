@@ -26,33 +26,23 @@ public class GameFinish : MonoBehaviour
         tierString = other.gameObject.GetComponent<Gacha>().GetGachaTier();
       }
       count++;
-
-      Debug.Log(other.gameObject.GetComponent<Gacha>().GetGachaTier());
-      //tier = other.gameObject.GetComponent<Gacha>().getGachaTier();
       Destroy(other.gameObject);
     }
 
-    if (FindObjectOfType<GameController>().GetCurrentNPCSkill() != "rich")
+    if (FindObjectOfType<GameController>().GetCurrentNPCSkill() == "rich" && count < 2)
     {
-      if (count == 1)
-      {
-        count = 0;
-        FindObjectOfType<GameController>().RoundEnd(tierString);
-        FindObjectOfType<BoxController>().ResetBox();
-        FindObjectOfType<BoxAnimationController>().RestartBox();
-      }
+      return;
     }
-    else
+    if (FindObjectOfType<GameController>().GetCurrentNPCSkill() != "rich" && count < 1)
     {
-      if (count == 2)
-      {
-        count = 0;
-        FindObjectOfType<GameController>().RoundEnd(tierString);
-        FindObjectOfType<BoxController>().ResetBox();
-        FindObjectOfType<BoxAnimationController>().RestartBox();
-      }
+      return;
+    }
 
-    }
+    count = 0;
+    FindObjectOfType<GameController>().RoundEnd(tierString);
+    FindObjectOfType<BoxController>().ResetBox();
+    FindObjectOfType<BoxAnimationController>().RestartBox();
     tier = 0;
+
   }
 }
