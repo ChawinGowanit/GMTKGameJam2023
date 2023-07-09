@@ -18,16 +18,18 @@ public class GameFinish : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.gameObject.tag == "Gacha")
+    if (other.gameObject.tag != "Gacha")
     {
-      if (tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()] > tier)
-      {
-        tier = tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()];
-        tierString = other.gameObject.GetComponent<Gacha>().GetGachaTier();
-      }
-      count++;
-      Destroy(other.gameObject);
+      return;
     }
+
+    if (tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()] > tier)
+    {
+      tier = tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()];
+      tierString = other.gameObject.GetComponent<Gacha>().GetGachaTier();
+    }
+    count++;
+    Destroy(other.gameObject);
 
     if (FindObjectOfType<GameController>().GetCurrentNPCSkill() == "rich" && count < 2)
     {
