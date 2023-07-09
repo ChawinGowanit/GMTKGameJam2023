@@ -919,7 +919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6898817140129296682, guid: 468b20f2bf46a8b41a208e7e4b549a83, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6898817140129296682, guid: 468b20f2bf46a8b41a208e7e4b549a83, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1920,7 +1920,7 @@ RectTransform:
   m_Pivot: {x: 0, y: 0}
 --- !u!95 &1697845754
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1937,8 +1937,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1697845755
 MonoBehaviour:
   m_ObjectHideFlags: 0
