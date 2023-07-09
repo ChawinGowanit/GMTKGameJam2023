@@ -53,7 +53,7 @@ public class BoxController : MonoBehaviour
       transform.Rotate(Vector3.back, rotationSpeed * Time.deltaTime);
     }
 
-    if (Input.GetKeyDown(KeyCode.Space))
+    if (Input.GetKeyDown(KeyCode.W))
     {
       Vector3 randomOffset = Random.insideUnitSphere * shakeMagnitude;
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BoxAnimationController : MonoBehaviour
 {
-
   Animator boxAnimator;
 
   void Start()
@@ -25,6 +24,11 @@ public class BoxAnimationController : MonoBehaviour
   public void RestartBox()
   {
     boxAnimator.Play("Box_idle");
+  }
+
+  public void GachaClick()
+  {
+    AudioManager.instance.Play("GachaClick");
   }
 
 }

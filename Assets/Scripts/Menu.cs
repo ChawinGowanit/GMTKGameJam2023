@@ -50,4 +50,8 @@ public class Menu : MonoBehaviour
   {
     TransitionManager.Instance().Transition(sceneName, transition, startDelay);
   }
+  public void GachaClick()
+  {
+    AudioManager.instance.Play("GachaClick");
+  }
 }

@@ -23,25 +23,13 @@ public class ChatController : MonoBehaviour
   public void SetChatImage(string newName)
   {
     string imgPath = "";
-    if (newName == "Mascot")
+    switch (newName)
     {
-      imgPath = "npc1icon";
-    }
-    else if (newName == "Wimpy Kid")
-    {
-      imgPath = "npc2icon";
-    }
-    else if (newName == "Witch")
-    {
-      imgPath = "npc3icon";
-    }
-    else if (newName == "Normie Girl")
-    {
-      imgPath = "npc4icon";
-    }
-    else if (newName == "Paddle Pop")
-    {
-      imgPath = "npc5icon";
+      case "Mascot": imgPath = "npc1icon"; break;
+      case "Wimpy Kid": imgPath = "npc2icon"; break;
+      case "Witch": imgPath = "npc3icon"; break;
+      case "Normie Girl": imgPath = "npc4icon"; break;
+      default: imgPath = "npc5icon"; break;
     }
     npcImage.sprite = Resources.Load<Sprite>(imgPath);
   }
@@ -49,19 +37,11 @@ public class ChatController : MonoBehaviour
   // set chat text to the component
   public void SetChatText(string newText)
   {
-    if (nameObj.text == "Witch")
-    {
-      if (newText[0] == 'r')
-      {
-        textObj.font = runic;
-        textObj.text = newText.Substring(1);
-      }
-      else
-      {
-        textObj.font = normal;
-        textObj.text = newText;
-      }
 
+    if (nameObj.text == "Witch" && newText[0] == 'r')
+    {
+      textObj.font = runic;
+      textObj.text = newText.Substring(1);
     }
     else
     {

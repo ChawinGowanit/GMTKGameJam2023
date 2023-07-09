@@ -6,15 +6,6 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 
-  enum GameState
-  {
-    START,
-    NPC_ENTER,
-    PLAY,
-    NPC_LEAVE,
-    OVERALL
-  }
-
   [SerializeField] int currentNPC = 0;
   [SerializeField] List<int> npc = new List<int>();
   [SerializeField] List<string> preferenceTier = new List<string>();
@@ -119,7 +110,6 @@ public class GameController : MonoBehaviour
     npcStory.text = this.GetComponent<NPCReactionController>().GetNPCStory(npc[currentNPC]);
     setNpcImage(npc[currentNPC]);
     infoAnimator.SetTrigger("InfoIn");
-    // NOTE - npc sprite
   }
 
   public void setNpcImage(int npc)
@@ -149,6 +139,7 @@ public class GameController : MonoBehaviour
   public void OnCloseShowNPC()
   {
     infoAnimator.SetTrigger("InfoOut");
+    AudioManager.instance.Play("ButtonPress");
     FindObjectOfType<BoxController>().GenerateGacha(npcSkills[currentNPC], preferenceTier[currentNPC]);
     closeBtn.enabled = false;
   }
@@ -156,6 +147,7 @@ public class GameController : MonoBehaviour
   public void ToggleNPCStory()
   {
     storyPanel.SetActive(!storyPanel.activeInHierarchy);
+    AudioManager.instance.Play("ButtonPress");
   }
 
   public void RoundEnd(string tier)
@@ -206,8 +198,6 @@ public class GameController : MonoBehaviour
 
   public void ChangeNPC()
   {
-    //Debug.Log(currentNPC);
-    //Debug.Log(npc[currentNPC]);
     FindObjectOfType<NPCActivate>().ChangeNPC(npc[currentNPC]);
   }
 
