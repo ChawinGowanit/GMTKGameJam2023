@@ -44,15 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac18cee6bcb25b4c8e053c815e5ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Puiz
-  story: story3
+  _name: Witch
+  story: An isekai'ed witch from a fantasy world trying to live a normal life. She
+    enjoys egg tarts.
   HappyReaction:
-  - HHHH1
-  - HHHH2
-  - HHHH23
+  - "This character looks kinda similar\u2026 "
+  - 'It looks like this thing can even shoot fireball!? '
+  - "Even the people in my world ain\u2019t this cool "
+  - rHFCCI!!!
   SadReaction:
-  - SS23s
-  - SS2
-  - SS24
-  eventImage: {fileID: 0}
-  eventText: 
+  - 'What is this peasant-looking thing? '
+  - 'Great. More trash '
+  - "I should\u2019ve burned the contraption when I got the chance "
+  - rEFM...

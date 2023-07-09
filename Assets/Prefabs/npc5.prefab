@@ -44,15 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac18cee6bcb25b4c8e053c815e5ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Naem
-  story: story5
+  _name: Paddle Pop
+  story: 'A loose wolf from the local zoo selling ice cream to kids. Everyone around
+    here thinks he is in a costume. '
   HappyReaction:
-  - Ym better
-  - Ym better2
-  - Ym better23
+  - '*hyped roaring*'
+  - '*exciting roaring*'
+  - '*bragging growling*'
   SadReaction:
-  - Puiz better2
-  - Puiz better23
-  - Puiz better234
-  eventImage: {fileID: 0}
-  eventText: 
+  - '*sad growling*'
+  - '*whimpers*'
+  - '*angry roaring*'

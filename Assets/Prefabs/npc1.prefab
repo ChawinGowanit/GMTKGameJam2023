@@ -50,8 +50,10 @@ MonoBehaviour:
   HappyReaction:
   - Yay this character is so cool
   - Not as cool as Yongming-chan but still cool
+  - I wanna make a costume out of this :D
   SadReaction:
   - Yongming-chan save me T^T
   - Ahhh I'm so unlucky TAT
+  - 'This is like that time I lost to that girl grrr '
   eventImage: {fileID: 0}
   eventText: off rate :(

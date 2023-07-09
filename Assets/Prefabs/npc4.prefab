@@ -44,15 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac18cee6bcb25b4c8e053c815e5ddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Ton
-  story: story4
+  _name: Normie Girl
+  story: An absolutely normal girl. She just happen to pass this machine often and
+    got curious.
   HappyReaction:
-  - Not that happy
-  - Not that happy2
-  - Not that happy3
+  - I got this very cute character ( uwu )
+  - < ' ' >~<3
+  - Got very lucky today (0w0)b
+  - "So shiny\u2026 :O"
   SadReaction:
-  - Not that sad
-  - Not that sad2
-  - Not that sad23
+  - "I only got the ones I don't want (;\u2014;) "
+  - "I wanna cry\u2026 (TT\u201D) "
+  - 'Where can I get a refund >:(( '
   eventImage: {fileID: 0}
   eventText: 
