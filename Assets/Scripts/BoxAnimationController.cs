@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class BoxAnimationController : MonoBehaviour
 {
-  Animator myAnimator;
+
+  Animator boxAnimator;
+
   void Start()
   {
-    myAnimator = GetComponent<Animator>();
+    boxAnimator = GetComponent<Animator>();
   }
 
   // Update is called once per frame
@@ -17,12 +19,12 @@ public class BoxAnimationController : MonoBehaviour
 
   public void PressedBox()
   {
-    myAnimator.Play("Box_pressed");
+    boxAnimator.Play("Box_pressed");
   }
 
   public void RestartBox()
   {
-    myAnimator.Play("Box_idle");
+    boxAnimator.Play("Box_idle");
   }
 
 }

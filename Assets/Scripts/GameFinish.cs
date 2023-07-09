@@ -16,48 +16,35 @@ public class GameFinish : MonoBehaviour
     tierDict.Add("rainbow", 3);
   }
 
-  void Update()
-  {
-
-  }
-
   private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.gameObject.tag == "Gacha")
+    if (other.gameObject.tag != "Gacha")
     {
-      if (tierDict[other.gameObject.GetComponent<Gacha>().getGachaTier()] > tier)
-      {
-        tier = tierDict[other.gameObject.GetComponent<Gacha>().getGachaTier()];
-        tierString = other.gameObject.GetComponent<Gacha>().getGachaTier();
-      }
-      count++;
-
-      Debug.Log(other.gameObject.GetComponent<Gacha>().getGachaTier());
-      //tier = other.gameObject.GetComponent<Gacha>().getGachaTier();
-      Destroy(other.gameObject);
+      return;
     }
 
-    if (FindObjectOfType<GameController>().getCurrentNPCSkill() != "rich")
+    if (tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()] > tier)
     {
-      if (count == 1)
-      {
-        count = 0;
-        FindObjectOfType<GameController>().RoundEnd(tierString);
-        FindObjectOfType<BoxController>().ResetBox();
-        FindObjectOfType<BoxAnimationController>().RestartBox();
-      }
+      tier = tierDict[other.gameObject.GetComponent<Gacha>().GetGachaTier()];
+      tierString = other.gameObject.GetComponent<Gacha>().GetGachaTier();
     }
-    else
-    {
-      if (count == 2)
-      {
-        count = 0;
-        FindObjectOfType<GameController>().RoundEnd(tierString);
-        FindObjectOfType<BoxController>().ResetBox();
-        FindObjectOfType<BoxAnimationController>().RestartBox();
-      }
+    count++;
+    Destroy(other.gameObject);
 
+    if (FindObjectOfType<GameController>().GetCurrentNPCSkill() == "rich" && count < 2)
+    {
+      return;
     }
+    if (FindObjectOfType<GameController>().GetCurrentNPCSkill() != "rich" && count < 1)
+    {
+      return;
+    }
+
+    count = 0;
+    FindObjectOfType<GameController>().RoundEnd(tierString);
+    FindObjectOfType<BoxController>().ResetBox();
+    FindObjectOfType<BoxAnimationController>().RestartBox();
     tier = 0;
+
   }
 }

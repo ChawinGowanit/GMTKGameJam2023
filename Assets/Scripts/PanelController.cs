@@ -20,13 +20,13 @@ public class PanelController : MonoBehaviour
 
   }
 
-  public void spawnNewChat(string chatName, string chatText)
+  public void SpawnNewChat(string chatName, string chatText)
   {
     GameObject newChat = Instantiate(chatPrefab, transform);
     ChatController newChatController = newChat.GetComponent<ChatController>();
 
-    newChatController.setChatName(chatName);
-    newChatController.setChatText(chatText);
+    newChatController.SetChatName(chatName);
+    newChatController.SetChatText(chatText);
 
     int currentChat = chatList.Count;
     newChat.transform.position = new Vector3(
