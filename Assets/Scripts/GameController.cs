@@ -122,12 +122,12 @@ public class GameController : MonoBehaviour
     if (tier == preferenceTier[currentNPC])
     {
       reaction = FindObjectOfType<NPCReactionController>().GetNPCHappyReaction(npc[currentNPC]);
-      FindObjectOfType<NPCSpriteController>().happy();
+      FindObjectOfType<NPCSpriteController>().Happy();
     }
     else
     {
       reaction = FindObjectOfType<NPCReactionController>().GetNPCSadReaction(npc[currentNPC]);
-      FindObjectOfType<NPCSpriteController>().sad();
+      FindObjectOfType<NPCSpriteController>().Sad();
     }
     reactionList.Add(reaction);
 
@@ -152,7 +152,7 @@ public class GameController : MonoBehaviour
     infoAnimator.SetTrigger("PhoneIn");
     foreach (var reaction in reactionList)
     {
-      panel.GetComponent<PanelController>().spawnNewChat(reaction._name, reaction._reaction);
+      panel.GetComponent<PanelController>().SpawnNewChat(reaction._name, reaction._reaction);
     }
 
   }

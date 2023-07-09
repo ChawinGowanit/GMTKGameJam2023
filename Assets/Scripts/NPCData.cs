@@ -30,7 +30,7 @@ public class NPCData : MonoBehaviour
   {
     return SadReaction[Random.Range(0, SadReaction.Length)];
   }
-  public string GeteventText()
+  public string GetEventText()
   {
     return eventText;
   }

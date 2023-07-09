@@ -20,7 +20,7 @@ public class PanelController : MonoBehaviour
 
   }
 
-  public void spawnNewChat(string chatName, string chatText)
+  public void SpawnNewChat(string chatName, string chatText)
   {
     GameObject newChat = Instantiate(chatPrefab, transform);
     ChatController newChatController = newChat.GetComponent<ChatController>();
