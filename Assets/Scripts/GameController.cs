@@ -33,14 +33,31 @@ public class GameController : MonoBehaviour
   [SerializeField] TextMeshProUGUI npcStory;
   [SerializeField] Animator infoAnimator;
   [SerializeField] Button closeBtn;
+  [SerializeField] Image npcImage;
+
+  Sprite npc1icon;
+  Sprite npc2icon;
+  Sprite npc3icon;
+  Sprite npc4icon;
+  Sprite npc5icon;
+
 
   void Start()
   {
+    loadSprite();
     // NOTE - init NPC ,pref ,and skill
     RandomGameloop();
     // NOTE - start first NPC
     ChangeNPC();
     ShowNPCPref(currentNPC);
+  }
+  public void loadSprite()
+  {
+    npc1icon = Resources.Load<Sprite>("npc1icon");
+    npc2icon = Resources.Load<Sprite>("npc2icon");
+    npc3icon = Resources.Load<Sprite>("npc3icon");
+    npc4icon = Resources.Load<Sprite>("npc4icon");
+    npc5icon = Resources.Load<Sprite>("npc5icon");
   }
 
   public void RandomGameloop()
@@ -100,8 +117,33 @@ public class GameController : MonoBehaviour
     skill.text = "Skill: " + npcSkills[currentNPC];
     storyPanel.SetActive(false);
     npcStory.text = this.GetComponent<NPCReactionController>().GetNPCStory(npc[currentNPC]);
+    setNpcImage(npc[currentNPC]);
     infoAnimator.SetTrigger("InfoIn");
     // NOTE - npc sprite
+  }
+
+  public void setNpcImage(int npc)
+  {
+    switch (npc)
+    {
+      case 1:
+        npcImage.sprite = npc1icon;
+        return;
+      case 2:
+        npcImage.sprite = npc2icon;
+        return;
+      case 3:
+        npcImage.sprite = npc3icon;
+        return;
+      case 4:
+        npcImage.sprite = npc4icon;
+        return;
+      case 5:
+        npcImage.sprite = npc5icon;
+        return;
+      default:
+        return;
+    }
   }
 
   public void OnCloseShowNPC()
@@ -164,6 +206,8 @@ public class GameController : MonoBehaviour
 
   public void ChangeNPC()
   {
+    //Debug.Log(currentNPC);
+    //Debug.Log(npc[currentNPC]);
     FindObjectOfType<NPCActivate>().ChangeNPC(npc[currentNPC]);
   }
 

@@ -9,8 +9,6 @@ public class NPCData : MonoBehaviour
   [SerializeField] string story;
   [SerializeField] string[] HappyReaction;
   [SerializeField] string[] SadReaction;
-  [SerializeField] Image eventImage;
-  [SerializeField] string eventText;
 
   public string GetStory()
   {
@@ -29,9 +27,5 @@ public class NPCData : MonoBehaviour
   public string GetSadReaction()
   {
     return SadReaction[Random.Range(0, SadReaction.Length)];
-  }
-  public string GetEventText()
-  {
-    return eventText;
   }
 }

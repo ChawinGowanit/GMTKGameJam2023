@@ -27,6 +27,8 @@ public class PanelController : MonoBehaviour
 
     newChatController.SetChatName(chatName);
     newChatController.SetChatText(chatText);
+    newChatController.SetChatImage(chatName);
+
 
     int currentChat = chatList.Count;
     newChat.transform.position = new Vector3(
