@@ -12,25 +12,25 @@ public class NPCData : MonoBehaviour
   [SerializeField] Image eventImage;
   [SerializeField] string eventText;
 
-  public string getStory()
+  public string GetStory()
   {
     return story;
   }
 
-  public string getName()
+  public string GetName()
   {
     return _name;
   }
-  public string getHappyReaction()
+  public string GetHappyReaction()
   {
     return HappyReaction[Random.Range(0, HappyReaction.Length)];
   }
 
-  public string getSadReaction()
+  public string GetSadReaction()
   {
     return SadReaction[Random.Range(0, SadReaction.Length)];
   }
-  public string geteventText()
+  public string GetEventText()
   {
     return eventText;
   }
